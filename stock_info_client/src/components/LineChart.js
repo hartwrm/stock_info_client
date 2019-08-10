@@ -2,6 +2,15 @@ import React, {Component} from 'react'
 import Chart from 'chart.js'
 
 class LineChart extends Component {
+  componentDidMount(){
+    this.getData()
+  }
+  getData = () => {
+    fetch('/companies')
+    .then(response => response.json())
+    .then(json =>console.log(json))
+    .catch(err => console.log(err))
+  }
   render(){
     return(
       <>
