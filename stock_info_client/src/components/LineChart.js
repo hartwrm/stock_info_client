@@ -6,10 +6,35 @@ class LineChart extends Component {
     this.getData()
   }
   getData = () => {
-    fetch('/companies')
+    fetch('/companies/1')
     .then(response => response.json())
-    .then(json =>console.log(json))
+    .then(json => console.log(json))
+    .then(jData => this.prepData(jData))
+    .then(data => this.createChart(data))
     .catch(err => console.log(err))
+  }
+  prepData = (apiData) => {
+    const chartData ={
+      labels: [],
+      datasets: [
+        {
+          label: 'Daily Stock Price',
+          data: []
+        }
+      ]
+    }
+    apiData.prices.forEach(price => {
+      chartData.labels.push(price.id)
+      chartData.datasets[0].data.push(prices.price)
+    })
+    return chartData
+  }
+  createChart = (chartData) => {
+    const ctx = document.querySelector('#stockprices')
+    const stockChart = new Chart(ctx, {
+      type: 'line',
+      data: chartData
+    })
   }
   render(){
     return(
