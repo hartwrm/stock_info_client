@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
-import LineChart from './components/LineChart'
+import Coty from './components/Coty'
+import Xerox from './components/Xerox'
+import Chipotle from './components/Chipotle'
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <LineChart />
+        <Coty />
+        <Xerox />
+        <Chipotle />
       </div>
     );
   }
