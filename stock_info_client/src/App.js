@@ -9,12 +9,17 @@ import Dentsply from './components/Dentsply'
 import Advanced from './components/Advanced'
 import Msci from './components/Msci'
 import Dish from './components/Dish'
+import Nav from './components/Nav'
+import CreateAccount from './components/CreateAccount'
 import './App.css';
 
 class App extends Component {
+
   render() {
     return (
       <div className="App">
+        <Nav />
+        <CreateAccount />
         <div className="container">
         <Coty />
         <Xerox />
