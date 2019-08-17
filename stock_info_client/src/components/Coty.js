@@ -2,6 +2,9 @@ import React, {Component} from 'react'
 import Chart from 'chart.js'
 
 class Coty extends Component {
+  state = {
+    company: []
+  }
   componentDidMount(){
     this.getData()
   }
@@ -30,7 +33,7 @@ class Coty extends Component {
   }
   createChart = (chartData) => {
     const ctx = document.querySelector('#coty')
-    const stockChart = new Chart(ctx, {
+    new Chart(ctx, {
       type: 'line',
       data: chartData
     })

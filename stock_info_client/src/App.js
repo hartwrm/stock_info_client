@@ -10,17 +10,39 @@ import Advanced from './components/Advanced'
 import Msci from './components/Msci'
 import Dish from './components/Dish'
 import Nav from './components/Nav'
-import CreateAccount from './components/CreateAccount'
 import './App.css';
 
 class App extends Component {
-
+state = {
+  companies: []
+}
+componentDidMount(){
+  this.getCompanies()
+}
+getCompanies(){
+  fetch('http://localhost:3000/companies')
+  .then(res => res.json())
+  .then(json => this.setState({companies: json}))
+  .catch(err => console.log(err))
+}
   render() {
     return (
       <div className="App">
         <Nav />
-        <CreateAccount />
         <div className="container">
+        {
+          this.state.companies.map(company => {
+            return(
+            <div key={company.id}>
+              <h4>{company.name}</h4>
+              <h5>{company.symbol}</h5>
+              <p>{company.notes}</p>
+            </div>
+          )
+          })
+        }
+
+
         <Coty />
         <Xerox />
         <Chipotle />
